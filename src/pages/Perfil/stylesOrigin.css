@@ -1,0 +1,55 @@
+#register-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.content p{
+    padding-top: 2rem;
+}
+
+.register-left {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-left h1 {
+    color: var(--color-primary-darker);
+    margin-top: 10%;
+}
+
+.register-left form {
+    margin-top: 3rem;
+}
+
+.register-left .content {
+    width: 60%;
+    padding-top: 3.2rem;
+}
+
+#register-page button {
+    width: 100%;
+    height: 5.6rem;
+    background: var(--color-secondary);
+    color: var(--color-button-text);
+    border: 0;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font: 700 2rem Archivo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin-top: 3.2rem;
+}
+
+#register-page button:hover{
+    background: var(--color-secondary-dark);
+}
+
+.register-right {
+   width: 55%;
+}
