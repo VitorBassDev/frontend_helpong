@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import logo from '../../assets/images/logo.svg';
-import landingImg from '../../assets/images/landing_02.svg';
+//import logo from '../../assets/images/logo.svg';
+import logo from '../../assets/novasImg/Logo-branco.svg';
+//import landingImg from '../../assets/images/landing_02.svg';
+import landingImg from '../../assets/novasImg/Img.png'
 
 import studyIcon from '../../assets/images/icons/study.svg';
 import teachIcon from '../../assets/images/icons/study.svg';
@@ -23,7 +25,7 @@ export default function Home() {
       <div id="page-landing-content" className="container">
         <div className="logo-container">
           <img  src={logo} alt="logo"/>
-            <h2>Plataforma Interativa</h2>
+           
         </div>
         
         <img 
