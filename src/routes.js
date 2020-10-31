@@ -11,7 +11,7 @@ import Registro from './pages/Registro'
 import RegistroOng from './pages/Registro/RegistroOng'
 import RegistroDoador from './pages/Registro/RegistroDoador'
 
-import BuscaNecessidade from './pages/Necessidade/'
+import todasNecessidades from './pages/Necessidade/'
 import CadastroNecessidade from './pages/Necessidade/cadastro'
 
 import PerfilOng from './pages/Perfil/'
@@ -35,7 +35,7 @@ export default function Routes(){
         
         
         <Route path="/cadastraNecessidade"   component={CadastroNecessidade}/>  
-        <Route path="/buscaNecessidade"   component={BuscaNecessidade}/>  
+        <Route path="/necessidades"   component={todasNecessidades}/>  
         
         <Route path="/perfilOng"   component={PerfilOng}/>  
       </Switch>

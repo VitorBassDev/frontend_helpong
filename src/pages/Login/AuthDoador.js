@@ -1,18 +1,38 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 
-import InputStartPages  from '../../componentes/InputStartPages/';
+import InputStartPages  from '../../componentes/InputStartPages';
 import BannerStartPages from '../../componentes/BannerStartPages';
 import backIcon from '../../assets/images/icons/back.svg';
 import './styles.css'
 
-function LoginDoador() {
+import api from '../../services/api';
+
+function LoginOng() {
 
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState();
+  const [senha_usuario, setPassword] = useState();
 
-  function handleLogin() {
-    console.log("login")
+  const history = useHistory(); 
+
+  async function handleLogin(e){
+    e.preventDefault();
+    try{
+      const resposta = await api.post('autenticacao/authDoador', {email, senha_usuario} );
+      
+      console.log(resposta.data.usuario.nome);
+      
+      alert(`Usuario Logado: ${resposta.data.usuario.nome}`);
+      localStorage.setItem('ongId',  resposta.data.usuario.id_usuario);      
+      localStorage.setItem('ongNome',  resposta.data.usuario.nome);      
+      localStorage.setItem('ongCpf',  resposta.data.usuario.cpf);      
+      localStorage.setItem('ongToken',  resposta.data.token);      
+      
+      history.push('/necessidades')
+      
+    } catch (err) {
+        alert('Falha no Login, tente novamente');
+    }
   }
 
   return(
@@ -27,36 +47,36 @@ function LoginDoador() {
             <img src={backIcon} alt="Voltar"/>
             </Link>    
             
-            <h1>Fazer login - Doador </h1>
-            <div className="login-doador">
+            <h1>Fazer login - ONG </h1>
+            <div className="login-ong">
               <form onSubmit={handleLogin}>
-                <InputStartPages
+              <InputStartPages
                   name="email"
                   type="email"
                   label="Email"
                   value={email}
-                  onChange={(e) => { setEmail(e.target.value) }}
+                  onChange={(e) =>  setEmail(e.target.value) }
+                  
                 />
 
                 <InputStartPages
                   name="password"
                   type="password"
                   label="Senha"
-                  value={password}
-                  onChange={(e) => { setPassword(e.target.value) }}
+                  value={senha_usuario}
+                  onChange={(e) =>  setPassword(e.target.value) }
                 />
 
                 <button type="submit">Entrar</button>
               </form>
             </div>
-
             <div className="register-link">
               Não tem conta? {' '}
-              <Link to="/register">Cadastre-se!</Link>
+              <Link to="/RegistroOng">Cadastre-se!</Link>
             </div>
         </div>
       </div>
     </div>
   )
 }
-export default LoginDoador;
+export default LoginOng;
