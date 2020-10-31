@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 
-import {FiPower} from 'react-icons/fi';
-
 import PageHeader   from '../../componentes/PageHeader';
 import Input        from '../../componentes/Input';
 import Textarea     from '../../componentes/Textarea';
@@ -14,12 +12,13 @@ import api from '../../services/api';
 import './stylesOrigin.css';
 
 export default function Necessidade() {
-
+	
 	const[descricao,	setDescricao]   = useState('');
 	const[quantidade, setQuantidade]  = useState('');
 	const[situacao,		setSituacao]		= useState('');
 
-	const ongId   = localStorage.getItem('ongId');
+	//const ongId   = localStorage.getItem('ongId');
+	const ongCpf  = localStorage.getItem('ongCpf');
 	const history = useHistory();
 	
 	async function registrarNecessidade(e) {
@@ -35,7 +34,7 @@ export default function Necessidade() {
 		try {
 			const resposta = await api.post('necessidade/novaNecessidade', data, {
 				headers:{
-					Authorization: ongId,
+					Authorization: ongCpf,
 				}
 			});
 
@@ -46,19 +45,14 @@ export default function Necessidade() {
 			alert('Erro no Cadastro, Tente novamente.');
 		}
 	}
-		function handleLogout(){
-			localStorage.clear();
-			history.push('/');
-		}
+		
 	return (
 		<div id="page-teacher-form" className="container">
 			<PageHeader 
 					title="Quer receber ajuda?"    
 					description="Informe sua necessidade, e espere uma boa ação"
 			/>      
-			<button onClick={handleLogout} type="button">
-       <FiPower size={18} color="#e02041" />
-      </button>  
+ 
 			<main>
 				<form onSubmit={registrarNecessidade}>
 					<fieldset>

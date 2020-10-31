@@ -1,5 +1,4 @@
 import React, { useState, useEffect} from 'react';
-import {useHistory } from 'react-router-dom';
 import { FiTrash2} from 'react-icons/fi';
 
 import PageHeader   from '../../componentes/PageHeader';
@@ -10,28 +9,26 @@ import './stylesOrigin.css';
 
 
 	export default function BuscarNecessidade(e) {
-		const history = useHistory();
+		
 		const [necessidade, setNecessidade] = useState([]);
 	
-		//const ongCpf  = localStorage.getItem('ongCpf');
-		const ongNome = localStorage.getItem('ongNome');
-		const ongId   = localStorage.getItem('ongId');
+		const ongCpf  = localStorage.getItem('ongCpf');
 	
 		useEffect(() => {
 			api.get('necessidade/necessidadeOng', {
 			headers: {
-				Authorization: ongId,
+				Authorization: ongCpf,
 			}
 			}).then(response =>{
 				setNecessidade(response.data);
 			})
-		}, [ongId]);
+		}, [ongCpf]);
 		
 		async function handleDeleteIncident(id_necessidade){
 			try{
         await api.delete(`necessidade/deletaNecessidade/${id_necessidade}`, {
           headers:{
-            Authorization: ongId,
+            Authorization: ongCpf,
 					}
 					
 				},

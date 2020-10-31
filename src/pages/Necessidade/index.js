@@ -1,5 +1,4 @@
 import React, { useState, useEffect} from 'react';
-import {useHistory } from 'react-router-dom';
 import { FiTrash2} from 'react-icons/fi';
 
 import PageHeader   from '../../componentes/PageHeader';
@@ -10,11 +9,10 @@ import './stylesOrigin.css';
 
 
 	export default function BuscarNecessidade(e) {
-		const history = useHistory();
+		
 		const [necessidade, setNecessidade] = useState([]);
 	
 		//const ongCpf  = localStorage.getItem('ongCpf');
-		const ongNome = localStorage.getItem('ongNome');
 		const ongId   = localStorage.getItem('ongId');
 	
 		useEffect(() => {

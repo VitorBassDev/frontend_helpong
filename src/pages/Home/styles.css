@@ -34,7 +34,7 @@ header .user-options a {
 
 header .user-options .option-login {
     border-right: 1px solid #351b58;
-    width: 50%;
+    width: 150%;
 }
 
 header .user-options .option-register {
@@ -139,7 +139,7 @@ header .user-options .option-register {
 
     header .user-options {
         justify-content: flex-end;
-        margin: 4rem;
+        margin: 5rem;
     }
     
     header .user-options a {
@@ -153,7 +153,7 @@ header .user-options .option-register {
     header .user-options .option-login {
         border-right: 1px solid #351b58;
         color: var(--color-text-in-primary);
-        width: 150px;
+        width: 250px;
     }
 
     header .user-options .option-login:hover {

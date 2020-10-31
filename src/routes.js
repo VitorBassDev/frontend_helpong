@@ -4,8 +4,8 @@ import {  BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 
 import Login from './pages/Login'
-import LoginOng from './pages/Login/LoginOng'
-import LoginDoador from './pages/Login/LoginDoador'
+import AuthOng from './pages/Login/AuthOng'
+import AuthDoador from './pages/Login/AuthDoador'
 
 import Registro from './pages/Registro'
 import RegistroOng from './pages/Registro/RegistroOng'
@@ -26,8 +26,8 @@ export default function Routes(){
         <Route path="/" exact           component={Home}/>  
 
         <Route path="/login"            component={Login}/>  
-        <Route path="/loginOng"         component={LoginOng}/>  
-        <Route path="/loginDoador"      component={LoginDoador}/>  
+        <Route path="/authOng"         component={AuthOng}/>  
+        <Route path="/authDoador"      component={AuthDoador}/>  
 
         <Route path="/registro"         component={Registro} />  
         <Route path="/registroOng"      component={RegistroOng}/>  

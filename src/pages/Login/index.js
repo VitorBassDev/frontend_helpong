@@ -8,7 +8,6 @@ import './styles.css'
 
 function Login() {
 
-
   function handleLogin() {
     console.log("login")
   }
@@ -29,12 +28,12 @@ function Login() {
             <div className="login-option">
               <form onSubmit={handleLogin}>
                 <div className="buttons-container">
-                  <Link to="/loginOng" className="study">
+                  <Link to="/authOng" className="study">
                     <img src={studyIcon} alt="Estudar"/>
                     ONG
                   </Link>
                   
-                  <Link to="/loginDoador" className="teach">
+                  <Link to="/authDoador" className="teach">
                     <img src={teachIcon} alt="Ensinar"/>
                     Doador
                   </Link>

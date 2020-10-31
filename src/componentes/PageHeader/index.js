@@ -1,23 +1,32 @@
-import React from 'react';
+import React  from 'react';
+import { useHistory } from 'react-router-dom';
+import {FiPower} from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/images/logo.svg';
+
 import backIcon from '../../assets/images/icons/back.svg';
 import './styles.css';
 
-/*
-<img src={logo} alt="Logo"/>
-*/
-const PageHeader = (props) => {
 
-    const ongNome = localStorage.getItem('ongNome');
+const PageHeader = (props) => {
+    const history = useHistory();
+    const ongName = localStorage.getItem('ongNome')
+
+    function handleLogout(){
+        localStorage.clear();
+        history.push('/');
+    }
     return (
         <header className="page-header">
         <div className="top-bar-container">
             <Link to="/">
                 <img src={backIcon} alt="Voltar"/>
             </Link>
-            
-            <span> Bem Vindo(a) {ongNome } </span>
+        
+            <span> Bem Vindo(a) {ongName} </span>
+
+            <button onClick={handleLogout} type="button">
+       <FiPower size={18} color="#e02041" />
+      </button> 
         </div>
 
         <div className="header-content">
