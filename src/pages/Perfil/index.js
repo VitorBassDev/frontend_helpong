@@ -4,9 +4,9 @@ import { FiTrash2} from 'react-icons/fi';
 import PageHeaderOng   from '../../componentes/PageHeaderOng';
 import warningIcon from '../../assets/images/icons/warning.svg';
 import api from '../../services/api';
-import './styles.css';
+/**import './styles.css';
 import './stylesOrigin.css';
-
+*/
 
 	export default function BuscarNecessidade(e) {
 		
@@ -43,17 +43,17 @@ import './stylesOrigin.css';
   }
 
 	return (
-			
 		<div id="page-teacher-form" className="container">
+		
 			<PageHeaderOng 
 					title="Implementar gerenciamento de ONG "    
 					description="Escolha uma necessidade, realize uma boa ação !"
 			/>        
 			<main>
 				<fieldset>
-					<legend>Aqui Estão as Listadas todas as necessidades ainda não antendidas</legend>
+					<legend>Aqui estão todas as suas necessidades ainda não atendidas</legend>
 		
-					<h1>Casos Cadastrados</h1>
+					
 						<ul>
 							{necessidade.map(incident =>(
 								<li key={incident.id_necessidade}>

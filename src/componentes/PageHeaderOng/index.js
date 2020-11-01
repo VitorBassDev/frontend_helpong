@@ -17,23 +17,23 @@ const PageHeader = (props) => {
     }
     return (
         <header className="page-header">
-        <div className="top-bar-container">
-            <Link to="/">
-                <img src={backIcon} alt="Voltar"/>
-            </Link>
-        
-            <span> Bem Vindo(a) {ongName} </span>
+            <div className="top-bar-container">
+                <Link to="/">
+                    <img src={backIcon} alt="Voltar"/>
+                </Link>
+            
+                <span> Bem Vindo(a) {ongName} </span>
 
-            <button onClick={handleLogout} type="button">
-       <FiPower size={18} color="#e02041" />
-      </button> 
-        </div>
+                <button onClick={handleLogout} type="button">
+                    <FiPower size={18} color="#e02041" />
+                </button> 
+            </div>
 
-        <div className="header-content">
-            <strong>{props.title}</strong>
-            {props.description && <p>{props.description}</p>}
-            {props.children}
-        </div>
+            <div className="header-content">
+                <strong>{props.title}</strong>
+                {props.description && <p>{props.description}</p>}
+                {props.children}
+            </div>
         </header>
     )
 }
