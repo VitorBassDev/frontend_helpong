@@ -5,10 +5,11 @@ import InputStartPages  from '../../componentes/InputStartPages';
 import BannerStartPages from '../../componentes/BannerStartPages';
 import backIcon from '../../assets/images/icons/back.svg';
 import './styles.css'
+import swal from 'sweetalert'
 
 import api from '../../services/api';
 
-function LoginOng() {
+function LoginDoador() {
 
   const [email, setEmail] = useState('');
   const [senha_usuario, setPassword] = useState();
@@ -22,19 +23,29 @@ function LoginOng() {
       
       console.log(resposta.data.usuario.nome);
       
-      alert(`Usuario Logado: ${resposta.data.usuario.nome}`);
+      swal({
+        title: "Perfil Verificado!",
+        text: "Usuário logado com Sucesso!",
+        icon: "success",
+        button: "Ok!",
+      });      
+      //alert(`Usuario Logado: ${resposta.data.usuario.nome}`);
       localStorage.setItem('ongId',  resposta.data.usuario.id_usuario);      
       localStorage.setItem('ongNome',  resposta.data.usuario.nome);      
       localStorage.setItem('ongCpf',  resposta.data.usuario.cpf);      
-      localStorage.setItem('ongToken',  resposta.data.token);      
+      localStorage.setItem('ongToken',  resposta.data.token);        
       
-      history.push('/necessidades')
+      await history.push('/necessidades')
       
     } catch (err) {
-        alert('Falha no Login, tente novamente');
+      swal({
+        title: "Algo deu errado !",
+        text: " Veriique Suas Credenciais !",
+        icon: "warning",
+        button: "Tentar Novamente !",
+      });
     }
   }
-
   return(
     <div id="register-page" >
       <div className="register-right">
@@ -47,7 +58,7 @@ function LoginOng() {
             <img src={backIcon} alt="Voltar"/>
             </Link>    
             
-            <h1>Fazer login - ONG </h1>
+            <h1>Doador </h1>
             <div className="login-ong">
               <form onSubmit={handleLogin}>
               <InputStartPages
@@ -79,4 +90,4 @@ function LoginOng() {
     </div>
   )
 }
-export default LoginOng;
+export default LoginDoador;

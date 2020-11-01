@@ -58,7 +58,7 @@ function LoginOng() {
             <img src={backIcon} alt="Voltar"/>
             </Link>    
             
-            <h1>Fazer login - ONG </h1>
+            <h1> ONG </h1>
             <div className="login-ong">
               <form onSubmit={handleLogin}>
               <InputStartPages
