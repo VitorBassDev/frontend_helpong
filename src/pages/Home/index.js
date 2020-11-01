@@ -40,7 +40,7 @@ export default function Home() {
               Ajudar
           </Link>
 
-          <Link to="/cadastraNecessidade" className="teach">
+          <Link to="/registroNecessidade" className="teach">
             <img src={teachIcon} alt="Ensinar"/>
               Pedir Ajuda
           </Link>

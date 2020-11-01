@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert'
 
 import PageHeader   from '../../componentes/PageHeaderDoador';
 import Input        from '../../componentes/Input';
@@ -32,18 +33,28 @@ export default function Necessidade() {
 		};
 
 		try {
-			const resposta = await api.post('necessidade/novaNecessidade', data, {
+			const resposta = await api.post('necessidade/registraNecessidade', data, {
 				headers:{
 					Authorization: ongId,
 				}
 			});
-
-				alert(`Necessidade Cadastrada com Sucesso: ${resposta.data.identificador}`);
-				history.push('/');
+			swal({
+				title: "Necessidade Cadastrada com Sucesso ! ",
+        text: `Código de Rastreio: ${resposta.data.identificador}`,
+        icon: "success",
+        button: "Ok!",
+      });  
+			
+			history.push('/');
 
 		} catch(err){
-			alert('Erro no Cadastro, Tente novamente.');
-		}
+			swal({
+        title: "Algo deu errado !",
+        text: " Veriique Suas Credenciais !",
+        icon: "warning",
+        button: "Tentar Novamente !",
+      });
+    }
 	}
 		
 	return (

@@ -12,7 +12,7 @@ import RegistroOng from './pages/Registro/RegistroOng'
 import RegistroDoador from './pages/Registro/RegistroDoador'
 
 import todasNecessidades from './pages/Necessidade/'
-import CadastroNecessidade from './pages/Necessidade/cadastro'
+import RegistroNecessidade from './pages/Necessidade/RegistroNecessidade'
 
 import PerfilOng from './pages/Perfil/'
 
@@ -26,18 +26,18 @@ export default function Routes(){
         <Route path="/" exact           component={Home}/>  
 
         <Route path="/login"            component={Login}/>  
-        <Route path="/authOng"         component={AuthOng}/>  
-        <Route path="/authDoador"      component={AuthDoador}/>  
+        <Route path="/authOng"          component={AuthOng}/>  
+        <Route path="/authDoador"       component={AuthDoador}/>  
 
         <Route path="/registro"         component={Registro} />  
         <Route path="/registroOng"      component={RegistroOng}/>  
         <Route path="/registroDoador"   component={RegistroDoador}/>  
         
         
-        <Route path="/cadastraNecessidade"   component={CadastroNecessidade}/>  
-        <Route path="/necessidades"   component={todasNecessidades}/>  
+        <Route path="/registroNecessidade"   component={RegistroNecessidade}/>  
+        <Route path="/necessidades"     component={todasNecessidades}/>  
         
-        <Route path="/perfilOng"   component={PerfilOng}/>  
+        <Route path="/perfilOng"        component={PerfilOng}/>  
       </Switch>
     </BrowserRouter>
   );

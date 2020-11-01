@@ -1,5 +1,4 @@
 import React, { useState, useEffect} from 'react';
-import { FiTrash2} from 'react-icons/fi';
 
 import PageHeader   from '../../componentes/PageHeaderDoador';
 import warningIcon from '../../assets/images/icons/warning.svg';
@@ -7,16 +6,14 @@ import api from '../../services/api';
 import './styles.css';
 import './stylesOrigin.css';
 
-
 	export default function BuscarNecessidade(e) {
 		
 		const [necessidade, setNecessidade] = useState([]);
-	
-		//const ongCpf  = localStorage.getItem('ongCpf');
+
 		const ongId   = localStorage.getItem('ongId');
 	
 		useEffect(() => {
-			api.get('necessidade/necessidadeAll', {
+			api.get('necessidade/necessidadeGeral', {
 			headers: {
 				Authorization: ongId,
 			}
@@ -25,20 +22,6 @@ import './stylesOrigin.css';
 			})
 		}, [ongId]);
 		
-			async function handleDeleteIncident(id){
-			try{
-					await api.delete(`incidents/ ${id}`, {
-						headers:{
-							Authorization: ongId,
-						}
-					});
-	
-					setNecessidade(necessidade.filter(incident => incident.id !==id ));
-			} catch (err){
-				alert('Erro ao Deletar o Caso');
-			}
-		}
-	
 	return (
 			
 		<div id="page-teacher-form" className="container">
@@ -51,9 +34,11 @@ import './stylesOrigin.css';
 					<legend>Aqui Estão as Listadas todas as necessidades ainda não antendidas</legend>
 		
 					<h1>Casos Cadastrados</h1>
+					<br/>
 						<ul>
 							{necessidade.map(incident =>(
 								<li key={incident.id_necessidade}>
+
 								<strong> Descrição:</strong>
 								<p> {incident.descricao}</p>
 
@@ -65,23 +50,21 @@ import './stylesOrigin.css';
 								
 								<strong>Situação: </strong>
 								<p>{incident.situacao}</p>
-
-								<button onClick={()=> handleDeleteIncident(incident.id)} type="button">
-									<FiTrash2 size={20} color=" #A8a8b3 "> </FiTrash2>
-								</button>
+								<br/>
+								<br/>
 							</li>          
-							))}
+							))
+							}
+							
 						</ul>
-
 				</fieldset>
 
 				<footer>
 						<p>
-								<img src={warningIcon} alt="Aviso importante"/>
-								Importante! <br/>
-								Preencha todos os dados antes de enviar 
+							<img src={warningIcon} alt="Aviso importante"/>
+							Importante! <br/>
+							Preencha todos os dados antes de enviar 
 						</p>
-
 				</footer>
 			</main>
 		</div>
