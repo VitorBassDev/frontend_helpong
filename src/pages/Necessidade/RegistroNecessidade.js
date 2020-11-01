@@ -38,13 +38,23 @@ export default function Necessidade() {
 					Authorization: ongId,
 				}
 			});
-			swal({
-				title: "Necessidade Cadastrada com Sucesso ! ",
-        text: `Código de Rastreio: ${resposta.data.identificador}`,
-        icon: "success",
-        button: "Ok!",
-      });  
-			
+			if(ongId){
+				swal({
+					title: "Necessidade Cadastrada com Sucesso ! ",
+					text: `Código de Rastreio: ${resposta.data.identificador}`,
+					icon: "success",
+					button: "Ok!",
+				});
+			} else {
+				swal({
+					title: "Usuário Não encontrado ",
+					text: "Faça login para registrar sua necessidade",
+					icon: "error",
+					button: "Logar",
+				});
+				history.push('/authOng');
+			}
+
 			history.push('/');
 
 		} catch(err){
@@ -54,8 +64,9 @@ export default function Necessidade() {
         icon: "warning",
         button: "Tentar Novamente !",
       });
-    }
-	}
+		}
+		}
+		
 		
 	return (
 		<div id="page-teacher-form" className="container">
