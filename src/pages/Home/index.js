@@ -35,7 +35,7 @@ export default function Home() {
         />
 
         <div className="buttons-container">
-          <Link to="/buscaNecessidade" className="study">
+          <Link to="/necessidades" className="study">
             <img src={studyIcon} alt="Estudar"/>
               Ajudar
           </Link>

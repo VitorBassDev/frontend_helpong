@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { FiTrash2} from 'react-icons/fi';
 
-import PageHeader   from '../../componentes/PageHeader';
+import PageHeader   from '../../componentes/PageHeaderDoador';
 import warningIcon from '../../assets/images/icons/warning.svg';
 import api from '../../services/api';
 import './styles.css';

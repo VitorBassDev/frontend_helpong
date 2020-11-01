@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory} from 'react-router-dom';
+import swal from 'sweetalert'
 
 import InputStartPages  from '../../componentes/InputStartPages';
 import BannerStartPages from '../../componentes/BannerStartPages';
@@ -21,17 +22,27 @@ function LoginOng() {
       const resposta = await api.post('autenticacao/authOng', {email, senha_usuario} );
       
       console.log(resposta.data.usuario.nome);
-      
-      alert(`Usuario Logado: ${resposta.data.usuario.nome}`);
+      swal({
+        title: "Perfil Verificado!",
+        text: "Usuário logado com Sucesso!",
+        icon: "success",
+        button: "Ok!",
+      });      
+      //alert(`Usuario Logado: ${resposta.data.usuario.nome}`);
       localStorage.setItem('ongId',  resposta.data.usuario.id_usuario);      
       localStorage.setItem('ongNome',  resposta.data.usuario.nome);      
       localStorage.setItem('ongCpf',  resposta.data.usuario.cpf);      
-      localStorage.setItem('ongToken',  resposta.data.token);      
+      localStorage.setItem('ongToken',  resposta.data.token);        
       
-      history.push('/perfilOng')
+      await history.push('/perfilOng')
       
     } catch (err) {
-        alert('Falha no Login, tente novamente');
+      swal({
+        title: "Algo deu errado !",
+        text: " Veriique Suas Credenciais !",
+        icon: "warning",
+        button: "Tentar Novamente !",
+      });
     }
   }
 
@@ -56,7 +67,6 @@ function LoginOng() {
                   label="Email"
                   value={email}
                   onChange={(e) =>  setEmail(e.target.value) }
-                  
                 />
 
                 <InputStartPages
@@ -67,7 +77,8 @@ function LoginOng() {
                   onChange={(e) =>  setPassword(e.target.value) }
                 />
 
-                <button type="submit">Entrar</button>
+                <button type="submit">Entrar </button>
+
               </form>
             </div>
             <div className="register-link">

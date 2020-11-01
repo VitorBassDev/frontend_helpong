@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 
-import PageHeader   from '../../componentes/PageHeader';
+import PageHeader   from '../../componentes/PageHeaderDoador';
 import Input        from '../../componentes/Input';
 import Textarea     from '../../componentes/Textarea';
 import Select       from '../../componentes/Select';
@@ -17,8 +17,8 @@ export default function Necessidade() {
 	const[quantidade, setQuantidade]  = useState('');
 	const[situacao,		setSituacao]		= useState('');
 
-	//const ongId   = localStorage.getItem('ongId');
-	const ongCpf  = localStorage.getItem('ongCpf');
+	const ongId   = localStorage.getItem('ongId');
+	//const ongCpf  = localStorage.getItem('ongCpf');
 	const history = useHistory();
 	
 	async function registrarNecessidade(e) {
@@ -34,7 +34,7 @@ export default function Necessidade() {
 		try {
 			const resposta = await api.post('necessidade/novaNecessidade', data, {
 				headers:{
-					Authorization: ongCpf,
+					Authorization: ongId,
 				}
 			});
 

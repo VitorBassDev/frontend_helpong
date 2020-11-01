@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { FiTrash2} from 'react-icons/fi';
 
-import PageHeader   from '../../componentes/PageHeader';
+import PageHeaderOng   from '../../componentes/PageHeaderOng';
 import warningIcon from '../../assets/images/icons/warning.svg';
 import api from '../../services/api';
 import './styles.css';
@@ -12,23 +12,24 @@ import './stylesOrigin.css';
 		
 		const [necessidade, setNecessidade] = useState([]);
 	
-		const ongCpf  = localStorage.getItem('ongCpf');
+		//const ongCpf  = localStorage.getItem('ongCpf');
+		const ongId  = localStorage.getItem('ongId');
 	
 		useEffect(() => {
 			api.get('necessidade/necessidadeOng', {
 			headers: {
-				Authorization: ongCpf,
+				Authorization: ongId,
 			}
 			}).then(response =>{
 				setNecessidade(response.data);
 			})
-		}, [ongCpf]);
+		}, [ongId]);
 		
 		async function handleDeleteIncident(id_necessidade){
 			try{
         await api.delete(`necessidade/deletaNecessidade/${id_necessidade}`, {
           headers:{
-            Authorization: ongCpf,
+            Authorization: ongId,
 					}
 					
 				},
@@ -41,12 +42,11 @@ import './stylesOrigin.css';
     }
   }
 
-	
 	return (
 			
 		<div id="page-teacher-form" className="container">
-			<PageHeader 
-					title="Seja um Doador"    
+			<PageHeaderOng 
+					title="Implementar gerenciamento de ONG "    
 					description="Escolha uma necessidade, realize uma boa ação !"
 			/>        
 			<main>
