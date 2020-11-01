@@ -9,8 +9,8 @@ import Select       from '../../componentes/Select';
 
 import warningIcon from '../../assets/images/icons/warning.svg';
 import api from '../../services/api';
-//import './styles.css';
-import './stylesOrigin.css';
+import './styles.css';
+//import './stylesOrigin.css';
 
 export default function Necessidade() {
 	
@@ -45,6 +45,7 @@ export default function Necessidade() {
 					icon: "success",
 					button: "Ok!",
 				});
+				history.push('/perfilOng');
 			} else {
 				swal({
 					title: "Usuário Não encontrado ",
@@ -55,8 +56,6 @@ export default function Necessidade() {
 				history.push('/authOng');
 			}
 
-			history.push('/');
-
 		} catch(err){
 			swal({
         title: "Algo deu errado !",
@@ -66,8 +65,7 @@ export default function Necessidade() {
       });
 		}
 		}
-		
-		
+				
 	return (
 		<div id="page-teacher-form" className="container">
 			<PageHeader 

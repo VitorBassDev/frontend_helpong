@@ -14,10 +14,7 @@ import RegistroDoador from './pages/Registro/RegistroDoador'
 import todasNecessidades from './pages/Necessidade/'
 import RegistroNecessidade from './pages/Necessidade/RegistroNecessidade'
 
-import PerfilOng from './pages/Perfil/index02'
-
-
-
+import PerfilOng from './pages/Perfil/'
 
 export default function Routes(){
   return(

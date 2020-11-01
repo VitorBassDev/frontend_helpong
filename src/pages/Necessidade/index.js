@@ -1,10 +1,10 @@
 import React, { useState, useEffect} from 'react';
-
 import PageHeader   from '../../componentes/PageHeaderDoador';
 import warningIcon from '../../assets/images/icons/warning.svg';
 import api from '../../services/api';
+
 import './styles.css';
-import './stylesOrigin.css';
+
 
 	export default function BuscarNecessidade(e) {
 		
@@ -25,48 +25,48 @@ import './stylesOrigin.css';
 	return (
 			
 		<div id="page-teacher-form" className="container">
-			<PageHeader 
-					title="Seja um Doador"    
-					description="Escolha uma necessidade, realize uma boa ação !"
-			/>        
-			<main>
-				<fieldset>
-					<legend>Aqui Estão as Listadas todas as necessidades ainda não antendidas</legend>
-		
-					<h1>Casos Cadastrados</h1>
-					<br/>
-						<ul>
-							{necessidade.map(incident =>(
-								<li key={incident.id_necessidade}>
+		<PageHeader
+				title="Implementar gerenciamento de ONG "    
+				description="Escolha uma necessidade, realize uma boa ação !"
+		/>        
 
-								<strong> Descrição:</strong>
-								<p> {incident.descricao}</p>
+		<div className="profile-container">
+			
+		<span>Aqui estão todas as necessidades ainda não atendidas</span>
+		<ul>
+				{necessidade.map(incident =>(
+				<li 
+					key={incident.id_necessidade}>
+					<strong> Descrição:</strong>
+					<p> {incident.descricao}</p>
 
-								<strong>Identificador: </strong>
-								<p>{incident.identificador}</p>
+					<strong>Identificador: </strong>
+					<p>{incident.identificador}</p>
 
-								<strong>Quantidade: </strong>
-								<p>{incident.quantidade}</p>
-								
-								<strong>Situação: </strong>
-								<p>{incident.situacao}</p>
-								<br/>
-								<br/>
-							</li>          
-							))
-							}
-							
-						</ul>
-				</fieldset>
+					<strong>Quantidade: </strong>
+					<p>{incident.quantidade}</p>
+					
+					<strong>Situação: </strong>
+					<p>{incident.situacao}</p>
+			
+					<button type="button">
+							Entrar em contato
+					</button>
+					
+				</li>          
+				)
+				)}
+			</ul>
+					
+			<footer>
+				<p>
+					<img src={warningIcon} alt="Aviso importante"/>
+					Importante! <br/>
+					Preencha todos os dados antes de enviar 
+				</p>
 
-				<footer>
-						<p>
-							<img src={warningIcon} alt="Aviso importante"/>
-							Importante! <br/>
-							Preencha todos os dados antes de enviar 
-						</p>
-				</footer>
-			</main>
+			</footer>
+		</div>
 		</div>
 	)
 }

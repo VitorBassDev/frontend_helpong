@@ -27,6 +27,7 @@ const PageHeader = (props) => {
                 <button onClick={handleLogout} type="button">
                     <FiPower size={18} color="#e02041" />
                 </button> 
+                
             </div>
 
             <div className="header-content">
